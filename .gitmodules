@@ -1,0 +1,3 @@
+[submodule "common/msgpuck"]
+	path = common/msgpuck
+	url = https://github.com/tarantool/msgpuck

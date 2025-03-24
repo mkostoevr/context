@@ -1,0 +1,8 @@
+*.xlog
+*.snap
+*.run
+*.index
+*.vylog
+*.swp
+*.so
+*.exe
