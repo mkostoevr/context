@@ -1,0 +1,2 @@
+Lua (field 2):    3259675 elem./sec.
+Lua (field 1000): 464790 elem./sec.

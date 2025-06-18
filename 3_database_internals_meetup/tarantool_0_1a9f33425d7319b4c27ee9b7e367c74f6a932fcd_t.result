@@ -1,0 +1,13 @@
+sum_first 130432067 rps
+sum_last 131548864 rps
+
+1mops_master 1632042 rps
+1mops_master 534872 rps
+1mops_master 69403 rps
+1mops_master 6075 rps
+
+MemTX:
+sum_first 66175002 rps
+sum_last 5492608 rps
+1mops_master 2015545 rps
+1mops_master 53204 rps
