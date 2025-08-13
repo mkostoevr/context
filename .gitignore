@@ -1,5 +1,6 @@
 *.xlog
 *.snap
+*.sortdata
 *.run
 *.index
 *.vylog

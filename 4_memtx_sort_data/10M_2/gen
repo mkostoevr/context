@@ -1,0 +1,6 @@
+# 10M is tuple count
+# 2 is SK count
+
+set tarantool_exe=$1
+
+../gen $tarantool_exe

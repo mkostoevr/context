@@ -1,0 +1,34 @@
+#!/bin/python3
+import os
+import re
+import sys
+
+pattern = re.compile("^[0-9]+[M]?_[0-9]+(_mk)?$")
+
+dname = os.path.basename(os.getcwd())
+if not pattern.match(dname):
+    print(f'{dname} does not match the pattern')
+    exit(1)
+
+mk = dname.endswith('_mk')
+if mk:
+    dname = dname[:-3]
+
+last_arg = 'true' if not mk else 'mk'
+
+snapc, skc = dname.split('_')
+if snapc[-1] == 'M':
+    mul = 1000000
+    snapc = snapc[:-1]
+elif snapc[-1].isdigit():
+    mul = 1
+else:
+    raise Exception('Unknown multiplier')
+
+snapc = int(snapc) * mul
+skc = int(skc)
+tarantool = sys.argv[1]
+
+print(f'Tuple count: {snapc}, SK count: {skc}')
+
+os.system(f'rm -rf 0* && /bin/time -v taskset -c 0-7 {tarantool} ../gen.lua {snapc} 0 {skc} {last_arg}')

@@ -1,0 +1,14 @@
+#!/bin/python3
+
+import os
+import sys
+from pathlib import Path
+
+test_arg = '-1'
+
+tarantool = sys.argv[1]
+if len(sys.argv) > 2:
+    assert(sys.argv[2].isdigit())
+    test_arg = sys.argv[2]
+
+os.system(f'/bin/time -v taskset -c 0-7 {tarantool} ../test.lua {test_arg}')
