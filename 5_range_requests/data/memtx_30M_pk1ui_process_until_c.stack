@@ -1,0 +1,88 @@
+[118956] [100.00%]  [100.00%] process_until_c:
+[70040] [58.88%] . [58.88%] box_iterator_next:
+[45488] [38.24%] .. [64.95%] memtx_iterator_next:
+[43540] [36.60%] ... [95.72%] int tree_iterator_next<true>:
+[39721] [33.39%] .... [91.23%] tree_iterator_next_base<true>:
+[18035] [15.16%] ..... [45.40%] memtx_tree_iterator_get_elem:
+[18032] [15.16%] ...... [99.98%] bps_tree_memtx_tree_iterator_get_elem:
+[16896] [14.20%] ....... [93.70%] bps_tree_memtx_tree_get_leaf_safe:
+[14300] [12.02%] ........ [84.64%] bps_tree_memtx_tree_restore_block:
+[11798] [ 9.92%] ......... [82.50%] matras_view_get:
+[ 9163] [ 7.70%] .......... [77.67%] matras_view_get_no_check
+[10324] [ 8.68%] ..... [25.99%] memtx_tree_iterator_next:
+[ 9082] [ 7.63%] ...... [87.97%] bps_tree_memtx_tree_iterator_next:
+[ 5240] [ 4.40%] ....... [57.70%] NS_USE_HINT::bps_tree_memtx_tree_get_leaf_safe:
+[ 2778] [ 2.34%] ........ [53.02%] bps_tree_memtx_tree_restore_block:
+[ 2768] [ 2.33%] ......... [99.64%] matras_view_get:
+[ 2768] [ 2.33%] .......... [100.00%] matras_view_get_no_check
+[ 2469] [ 2.08%] ....... [27.19%] bps_tree_memtx_tree_get_leaf_safe:
+[ 2469] [ 2.08%] ........ [100.00%] bps_tree_memtx_tree_restore_block:
+[ 2469] [ 2.08%] ......... [100.00%] matras_view_get
+[ 1293] [ 1.09%] ........ [52.37%] matras_view_get_no_check
+[ 1176] [ 0.99%] ........ [47.63%] NS_USE_HINT::bps_tree_memtx_tree_get_leaf_safe
+[ 4358] [ 3.66%] ..... [10.97%] tree_iterator_set_last<true>:
+[ 2271] [ 1.91%] ...... [52.11%] tree_iterator_set_last_tuple<true>:
+[  501] [ 0.42%] ....... [22.06%] tuple_ref
+[  211] [ 0.18%] ....... [ 9.29%] tuple_unref
+[ 1554] [ 1.31%] ...... [35.66%] tree_iterator_set_last_hint<true>
+[ 1184] [ 1.00%] ..... [ 2.98%] in_txn
+[ 1045] [ 0.88%] ..... [ 2.63%] memtx_tx_track_gap
+[   11] [ 0.01%] ..... [ 0.03%] memtx_tx_tuple_clarify
+[ 1120] [ 0.94%] ... [ 2.46%] tree_iterator_next<true>:
+[ 1120] [ 0.94%] .... [100.00%] tree_iterator_next_base<true>:
+[ 1120] [ 0.94%] ..... [100.00%] int tree_iterator_next<true>
+[13997] [11.77%] .. [19.98%] memtx_prepare_result_tuple:
+[ 5253] [ 4.42%] ... [37.53%] tuple_bless:
+[ 1321] [ 1.11%] .... [25.15%] tuple_unref
+[ 1277] [ 1.07%] .... [24.31%] tuple_ref
+[ 5028] [ 4.23%] ... [35.92%] memtx_tuple_decompress:
+[   32] [ 0.03%] .... [ 0.64%] tuple_is_compressed:
+[   14] [ 0.01%] ..... [43.75%] tuple_format:
+[   14] [ 0.01%] ...... [100.00%] tuple_format_by_id
+[ 4285] [ 3.60%] .. [ 6.12%] tuple_bless:
+[ 1292] [ 1.09%] ... [30.15%] tuple_ref
+[  258] [ 0.22%] ... [ 6.02%] tuple_unref
+[ 2104] [ 1.77%] .. [ 3.00%] iterator_next
+[ 1982] [ 1.67%] .. [ 2.83%] index_weak_ref_get_space:
+[  797] [ 0.67%] ... [40.21%] index_weak_ref_check
+[    9] [ 0.01%] .. [ 0.01%] box_check_slice:
+[    8] [ 0.01%] ... [88.89%] box_check_slice_slow
+[    7] [ 0.01%] ... [77.78%] fiber_check_slice:
+[    5] [ 0.00%] .... [71.43%] fiber_time_from_call:
+[    2] [ 0.00%] ..... [40.00%] box_check_slice_slow
+[    2] [ 0.00%] .... [28.57%] box_check_slice_slow
+[    1] [ 0.00%] ... [11.11%] box_check_slice_slow
+[20655] [17.36%] . [17.36%] :
+[16495] [13.87%] .. [79.86%] compare:
+[12305] [10.34%] ... [74.60%] field_compare_and_next<1>:
+[ 6526] [ 5.49%] .... [53.04%] mp_next:
+[ 1331] [ 1.12%] ..... [20.40%] mp_load_u8
+[ 4983] [ 4.19%] .... [40.50%] mp_compare_uint:
+[ 1055] [ 0.89%] ..... [21.17%] mp_load_u32
+[    8] [ 0.01%] ..... [ 0.16%] mp_decode_uint_data
+[    2] [ 0.00%] ..... [ 0.04%] mp_load_u8
+[ 1526] [ 1.28%] ... [ 9.25%] tuple_data:
+[  721] [ 0.61%] .... [47.25%] tuple_data_offset
+[ 1358] [ 1.14%] ... [ 8.23%] mp_decode_array:
+[   14] [ 0.01%] .... [ 1.03%] mp_load_u8
+[ 1288] [ 1.08%] .. [ 6.24%] hint_cmp
+[13508] [11.36%] . [11.36%] ~ScopedGuard:
+[ 8354] [ 7.02%] .. [61.84%] region_truncate:
+[ 3952] [ 3.32%] ... [47.31%] rlist_empty
+[ 3856] [ 3.24%] .. [28.55%] box_region_truncate
+[ 1282] [ 1.08%] .. [ 9.49%] box_region_truncate@plt
+[   16] [ 0.01%] .. [ 0.12%] operator
+[ 5962] [ 5.01%] . [ 5.01%] compare:
+[ 5962] [ 5.01%] .. [100.00%] :
+[ 5962] [ 5.01%] ... [100.00%] mp_next
+[ 1208] [ 1.02%] .. [20.26%] mp_load_u8
+[ 3129] [ 2.63%] . [ 2.63%] box_tuple_compare_with_key:
+[ 2599] [ 2.18%] .. [83.06%] tuple_compare_with_key
+[  530] [ 0.45%] .. [16.94%] mp_decode_array:
+[  524] [ 0.44%] ... [98.87%] mp_load_u8
+[ 1852] [ 1.56%] . [ 1.56%] box_region_used:
+[ 1279] [ 1.08%] .. [69.06%] region_used
+[ 1299] [ 1.09%] . [ 1.09%] box_iterator_next@plt
+[ 1275] [ 1.07%] . [ 1.07%] box_region_used@plt
+[ 1213] [ 1.02%] . [ 1.02%] box_tuple_compare_with_key@plt
+[    2] [ 0.00%] . [ 0.00%] box_region_truncate

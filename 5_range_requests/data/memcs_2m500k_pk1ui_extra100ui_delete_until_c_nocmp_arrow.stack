@@ -1,0 +1,375 @@
+[26188] [100.00%]  [100.00%] delete_until_c_nocmp_arrow:
+[25985] [99.22%] . [99.22%] box_delete:
+[25948] [99.08%] .. [99.86%] box_process_rw:
+[25765] [98.38%] ... [99.29%] space_execute_dml:
+[25758] [98.36%] .... [99.97%] memcs_space_execute_delete:
+[25703] [98.15%] ..... [99.79%] memcs_index_execute_delete:
+[25006] [95.49%] ...... [97.29%] memcs_index_do_delete:
+[22507] [85.94%] ....... [90.01%] memcs_column_execute_delete:
+[20676] [78.95%] ........ [91.86%] memcs_column_do_delete:
+[20327] [77.62%] ......... [98.31%] memcs_column_do_delete_8:
+[20199] [77.13%] .......... [99.37%] memcs_vec_8_delete:
+[10498] [40.09%] ........... [51.97%] bps_vec_memcs_vec_8_collect_path:
+[ 5896] [22.51%] ............ [56.16%] bps_vec_memcs_vec_8_find_ins_point
+[ 2485] [ 9.49%] ............ [23.67%] bps_vec_memcs_vec_8_restore_block:
+[ 2485] [ 9.49%] ............. [100.00%] matras_view_get:
+[ 2485] [ 9.49%] .............. [100.00%] matras_view_get_no_check
+[  651] [ 2.49%] ............ [ 6.20%] bps_vec_memcs_vec_8_root:
+[  596] [ 2.28%] ............. [91.55%] matras_view_get:
+[  593] [ 2.26%] .............. [99.50%] matras_view_get_no_check
+[ 7050] [26.92%] ........... [34.90%] bps_vec_memcs_vec_8_process_delete_leaf:
+[ 3337] [12.74%] ............ [47.33%] bps_vec_memcs_vec_8_delete_from_leaf:
+[ 1217] [ 4.65%] ............. [36.47%] memmove:
+[ 1163] [ 4.44%] .............. [95.56%] __memcpy_evex_unaligned_erms
+[   54] [ 0.21%] .............. [ 4.44%] memmove@plt
+[  716] [ 2.73%] ............. [21.46%] bps_vec_memcs_vec_8_last_up_leaf:
+[  528] [ 2.02%] .............. [73.74%] bps_vec_memcs_vec_8_last_up:
+[  336] [ 1.28%] ............... [63.64%] bps_vec_memcs_vec_8_set_child_last:
+[  193] [ 0.74%] ................ [57.44%] bps_vec_memcs_vec_1_mask_set:
+[  140] [ 0.53%] ................. [72.54%] bit_set
+[  118] [ 0.45%] .............. [16.48%] bps_vec_memcs_vec_8_get_last_leaf:
+[  115] [ 0.44%] ............... [97.46%] bit_test
+[  660] [ 2.52%] ............. [19.78%] bps_vec_memcs_vec_8_card_up
+[  496] [ 1.89%] ............. [14.86%] bps_vec_memcs_vec_8_mask_mv:
+[  377] [ 1.44%] .............. [76.01%] bps_vec_memcs_vec_1_mask_mv
+[ 1430] [ 5.46%] ............ [20.28%] bps_vec_memcs_vec_8_move_elems_to_left_leaf:
+[  472] [ 1.80%] ............. [33.01%] memmove:
+[  438] [ 1.67%] .............. [92.80%] __memcpy_evex_unaligned_erms
+[   25] [ 0.10%] .............. [ 5.30%] memmove@plt
+[  336] [ 1.28%] ............. [23.50%] bps_vec_memcs_vec_8_card_up
+[  301] [ 1.15%] ............. [21.05%] bps_vec_memcs_vec_8_touch_block:
+[  111] [ 0.42%] .............. [36.88%] matras_touch:
+[   83] [ 0.32%] ............... [74.77%] matras_get:
+[   83] [ 0.32%] ................ [100.00%] matras_view_get_no_check
+[   28] [ 0.11%] ............... [25.23%] matras_needs_touch
+[  145] [ 0.55%] ............. [10.14%] bps_vec_memcs_vec_8_last_up_leaf:
+[   88] [ 0.34%] .............. [60.69%] bps_vec_memcs_vec_8_last_up:
+[   55] [ 0.21%] ............... [62.50%] bps_vec_memcs_vec_8_set_child_last:
+[   30] [ 0.11%] ................ [54.55%] bps_vec_memcs_vec_1_mask_set:
+[   20] [ 0.08%] ................. [66.67%] bit_set
+[   36] [ 0.14%] .............. [24.83%] bps_vec_memcs_vec_8_get_last_leaf:
+[   24] [ 0.09%] ............... [66.67%] bit_test
+[   84] [ 0.32%] ............. [ 5.87%] bps_vec_memcs_vec_8_mask_mv:
+[   84] [ 0.32%] .............. [100.00%] bps_vec_memcs_vec_1_mask_mv
+[    8] [ 0.03%] .............. [ 9.52%] memcpy
+[  912] [ 3.48%] ............ [12.94%] memset
+[  724] [ 2.76%] ............ [10.27%] bps_vec_memcs_vec_8_process_delete_inner:
+[  320] [ 1.22%] ............. [44.20%] bps_vec_memcs_vec_8_move_elems_to_left_inner:
+[  112] [ 0.43%] .............. [35.00%] bps_vec_memcs_vec_8_touch_block:
+[    3] [ 0.01%] ............... [ 2.68%] matras_touch:
+[    3] [ 0.01%] ................ [100.00%] matras_get:
+[    3] [ 0.01%] ................. [100.00%] matras_view_get_no_check
+[   86] [ 0.33%] .............. [26.88%] memmove:
+[   84] [ 0.32%] ............... [97.67%] __memcpy_evex_unaligned_erms
+[    2] [ 0.01%] ............... [ 2.33%] memmove@plt
+[   85] [ 0.32%] .............. [26.56%] bps_vec_memcs_vec_1_mask_mv:
+[   40] [ 0.15%] ............... [47.06%] bit_test
+[   32] [ 0.12%] ............... [37.65%] bps_vec_memcs_vec_1_mask_set:
+[   26] [ 0.10%] ................ [81.25%] bit_set
+[   16] [ 0.06%] .............. [ 5.00%] bps_vec_memcs_vec_8_last_up_inner:
+[   13] [ 0.05%] ............... [81.25%] bps_vec_memcs_vec_8_last_up:
+[   12] [ 0.05%] ................ [92.31%] bps_vec_memcs_vec_8_set_child_last:
+[   11] [ 0.04%] ................. [91.67%] bps_vec_memcs_vec_1_mask_set:
+[   11] [ 0.04%] .................. [100.00%] bit_set
+[    1] [ 0.00%] ............... [ 6.25%] bps_vec_memcs_vec_8_get_last_inner
+[    8] [ 0.03%] .............. [ 2.50%] bps_vec_memcs_vec_8_card_up
+[    3] [ 0.01%] .............. [ 0.94%] bps_vec_memcs_vec_8_get_last_children_card:
+[    2] [ 0.01%] ............... [66.67%] bps_vec_memcs_vec_8_get_children_card
+[  268] [ 1.02%] ............. [37.02%] bps_vec_memcs_vec_8_delete_from_inner:
+[  175] [ 0.67%] .............. [65.30%] bps_vec_memcs_vec_1_mask_mv:
+[  118] [ 0.45%] ............... [67.43%] bps_vec_memcs_vec_1_mask_set:
+[   96] [ 0.37%] ................ [81.36%] bit_set
+[   28] [ 0.11%] ............... [16.00%] bit_test
+[   66] [ 0.25%] .............. [24.63%] memmove:
+[   60] [ 0.23%] ............... [90.91%] __memcpy_evex_unaligned_erms
+[    5] [ 0.02%] ............... [ 7.58%] memmove@plt
+[    3] [ 0.01%] .............. [ 1.12%] bps_vec_memcs_vec_8_touch_block:
+[    2] [ 0.01%] ............... [66.67%] matras_touch:
+[    1] [ 0.00%] ................ [50.00%] matras_needs_touch
+[    1] [ 0.00%] ................ [50.00%] matras_get:
+[    1] [ 0.00%] ................. [100.00%] matras_view_get_no_check
+[   65] [ 0.25%] ............. [ 8.98%] bps_vec_memcs_vec_8_inner_overmin_size
+[   48] [ 0.18%] ............. [ 6.63%] bps_vec_memcs_vec_8_move_elems_to_right_inner:
+[   29] [ 0.11%] .............. [60.42%] bps_vec_memcs_vec_1_mask_mv:
+[   13] [ 0.05%] ............... [44.83%] bit_test
+[   12] [ 0.05%] ............... [41.38%] bps_vec_memcs_vec_1_mask_set:
+[    9] [ 0.03%] ................ [75.00%] bit_set
+[    7] [ 0.03%] .............. [14.58%] memmove:
+[    7] [ 0.03%] ............... [100.00%] __memcpy_evex_unaligned_erms
+[    5] [ 0.02%] .............. [10.42%] bps_vec_memcs_vec_8_touch_block:
+[    4] [ 0.02%] ............... [80.00%] matras_touch:
+[    3] [ 0.01%] ................ [75.00%] matras_get:
+[    3] [ 0.01%] ................. [100.00%] matras_view_get_no_check
+[    1] [ 0.00%] ................ [25.00%] matras_needs_touch
+[    3] [ 0.01%] .............. [ 6.25%] bps_vec_memcs_vec_8_last_up_inner:
+[    1] [ 0.00%] ............... [33.33%] bps_vec_memcs_vec_8_last_up:
+[    1] [ 0.00%] ................ [100.00%] bps_vec_memcs_vec_8_set_child_last:
+[    1] [ 0.00%] ................. [100.00%] bps_vec_memcs_vec_1_mask_set:
+[    1] [ 0.00%] .................. [100.00%] bit_set
+[    2] [ 0.01%] .............. [ 4.17%] bps_vec_memcs_vec_8_card_up
+[    1] [ 0.00%] .............. [ 2.08%] bps_vec_memcs_vec_8_get_first_children_card:
+[    1] [ 0.00%] ............... [100.00%] bps_vec_memcs_vec_8_get_children_card
+[    8] [ 0.03%] ............. [ 1.10%] bps_vec_memcs_vec_8_collect_right_ext:
+[    3] [ 0.01%] .............. [37.50%] bps_vec_memcs_vec_8_restore_block:
+[    3] [ 0.01%] ............... [100.00%] matras_view_get
+[    2] [ 0.01%] ............... [66.67%] matras_view_get_no_check
+[    4] [ 0.02%] ............. [ 0.55%] memset
+[    2] [ 0.01%] ............. [ 0.28%] bps_vec_memcs_vec_8_collect_left_ext
+[    1] [ 0.00%] ............. [ 0.14%] bps_vec_memcs_vec_8_dispose_inner
+[  239] [ 0.91%] ............ [ 3.39%] bps_vec_memcs_vec_8_move_elems_to_right_leaf:
+[   82] [ 0.31%] ............. [34.31%] memmove:
+[   68] [ 0.26%] .............. [82.93%] __memcpy_evex_unaligned_erms
+[    7] [ 0.03%] .............. [ 8.54%] memmove@plt
+[   66] [ 0.25%] ............. [27.62%] bps_vec_memcs_vec_8_card_up
+[   25] [ 0.10%] ............. [10.46%] bps_vec_memcs_vec_8_mask_mv:
+[   25] [ 0.10%] .............. [100.00%] bps_vec_memcs_vec_1_mask_mv
+[    4] [ 0.02%] .............. [16.00%] memcpy
+[   22] [ 0.08%] ............. [ 9.21%] bps_vec_memcs_vec_8_touch_block:
+[   18] [ 0.07%] .............. [81.82%] matras_touch:
+[   11] [ 0.04%] ............... [61.11%] matras_get:
+[   11] [ 0.04%] ................ [100.00%] matras_view_get_no_check
+[    7] [ 0.03%] ............... [38.89%] matras_needs_touch
+[   16] [ 0.06%] ............. [ 6.69%] bps_vec_memcs_vec_8_last_up_leaf:
+[    6] [ 0.02%] .............. [37.50%] bps_vec_memcs_vec_8_last_up:
+[    4] [ 0.02%] ............... [66.67%] bps_vec_memcs_vec_8_set_child_last:
+[    2] [ 0.01%] ................ [50.00%] bps_vec_memcs_vec_1_mask_set:
+[    1] [ 0.00%] ................. [50.00%] bit_set
+[    4] [ 0.02%] .............. [25.00%] bps_vec_memcs_vec_8_get_last_leaf:
+[    4] [ 0.02%] ............... [100.00%] bit_test
+[  119] [ 0.45%] ............ [ 1.69%] bps_vec_memcs_vec_8_collect_right_ext:
+[   64] [ 0.24%] ............. [53.78%] bps_vec_memcs_vec_8_restore_block:
+[   64] [ 0.24%] .............. [100.00%] matras_view_get
+[   62] [ 0.24%] .............. [96.88%] matras_view_get_no_check
+[  112] [ 0.43%] ............ [ 1.59%] bps_vec_memcs_vec_8_leaf_overmin_size
+[   33] [ 0.13%] ............ [ 0.47%] bps_vec_memcs_vec_8_collect_left_ext
+[    8] [ 0.03%] ............ [ 0.11%] bps_vec_memcs_vec_8_touch_leaf:
+[    8] [ 0.03%] ............. [100.00%] bps_vec_memcs_vec_8_touch_block
+[    6] [ 0.02%] ............. [75.00%] matras_touch:
+[    6] [ 0.02%] .............. [100.00%] matras_get:
+[    6] [ 0.02%] ............... [100.00%] matras_view_get_no_check
+[    4] [ 0.02%] ............ [ 0.06%] bps_vec_memcs_vec_8_dispose_leaf:
+[    4] [ 0.02%] ............. [100.00%] bps_vec_memcs_vec_8_garbage_push
+[ 1808] [ 6.90%] ........... [ 8.95%] bps_vec_memcs_vec_8_touch_path:
+[ 1245] [ 4.75%] ............ [68.86%] bps_vec_memcs_vec_8_touch_block:
+[ 1116] [ 4.26%] ............. [89.64%] matras_touch:
+[  844] [ 3.22%] .............. [75.63%] matras_get:
+[  844] [ 3.22%] ............... [100.00%] matras_view_get_no_check
+[  271] [ 1.03%] .............. [24.28%] matras_needs_touch
+[  426] [ 1.63%] ........... [ 2.11%] bps_vec_memcs_vec_8_touch_block:
+[  268] [ 1.02%] ............ [62.91%] matras_touch:
+[  209] [ 0.80%] ............. [77.99%] matras_get:
+[  209] [ 0.80%] .............. [100.00%] matras_view_get_no_check
+[   59] [ 0.23%] ............. [22.01%] matras_needs_touch
+[  134] [ 0.51%] ........... [ 0.66%] bps_vec_memcs_vec_8_leaf_mask_get:
+[  129] [ 0.49%] ............ [96.27%] bit_test
+[   67] [ 0.26%] ........... [ 0.33%] matras_touch_reserve
+[   60] [ 0.23%] ......... [ 0.29%] memcs_column_update_data_size:
+[   60] [ 0.23%] .......... [100.00%] memcs_value_is_ext
+[   52] [ 0.20%] ......... [ 0.25%] memcs_column_do_delete_rle_8
+[  293] [ 1.12%] ........ [ 1.30%] memcs_value_is_ext
+[  112] [ 0.43%] ........ [ 0.50%] memcs_column_vec_size:
+[    1] [ 0.00%] ......... [ 0.89%] memcs_column_size_32:
+[    1] [ 0.00%] .......... [100.00%] memcs_vec_32_size:
+[    1] [ 0.00%] ........... [100.00%] bps_vec_memcs_vec_32_size
+[ 2009] [ 7.67%] ....... [ 8.03%] memcs_row_create_on_region:
+[ 1047] [ 4.00%] ........ [52.12%] region_aligned_alloc:
+[ 1041] [ 3.98%] ......... [99.43%] region_aligned_reserve:
+[ 1041] [ 3.98%] .......... [100.00%] region_reserve
+[ 1024] [ 3.91%] .......... [98.37%] region_reserve_slow:
+[ 1012] [ 3.86%] ........... [98.83%] slab_get_with_order:
+[  945] [ 3.61%] ............ [93.38%] slab_split:
+[  939] [ 3.59%] ............. [99.37%] slab_create
+[    1] [ 0.00%] ............. [ 0.11%] slab_order_size
+[   12] [ 0.05%] ............ [ 1.19%] rlist_empty
+[    6] [ 0.02%] ............ [ 0.59%] rlist_shift
+[    5] [ 0.02%] ............ [ 0.49%] slab_set_used
+[    4] [ 0.02%] ............ [ 0.40%] slab_create
+[    6] [ 0.02%] ........... [ 0.59%] slab_get:
+[    2] [ 0.01%] ............ [33.33%] slab_order
+[    4] [ 0.02%] ........... [ 0.39%] rlist_add
+[   15] [ 0.06%] .......... [ 1.44%] __memset_evex_unaligned_erms
+[    1] [ 0.00%] .......... [ 0.10%] rlist_empty
+[    2] [ 0.01%] ......... [ 0.19%] rslab_data_end
+[  954] [ 3.64%] ........ [47.49%] memset:
+[  942] [ 3.60%] ......... [98.74%] __memset_evex_unaligned_erms
+[   12] [ 0.05%] ......... [ 1.26%] region_reserve_slow:
+[   12] [ 0.05%] .......... [100.00%] slab_get_with_order:
+[   12] [ 0.05%] ........... [100.00%] slab_split:
+[   12] [ 0.05%] ............ [100.00%] slab_create
+[    7] [ 0.03%] ........ [ 0.35%] region_alloc:
+[    5] [ 0.02%] ......... [71.43%] region_reserve:
+[    5] [ 0.02%] .......... [100.00%] rslab_unused
+[  354] [ 1.35%] ....... [ 1.42%] memcs_row_set:
+[   47] [ 0.18%] ........ [13.28%] bit_set
+[    1] [ 0.00%] ....... [ 0.00%] region_used
+[  695] [ 2.65%] ...... [ 2.70%] memcs_index_binary_search_by_unique_key:
+[  693] [ 2.65%] ....... [99.71%] memcs_index_binary_search_by_key:
+[  662] [ 2.53%] ........ [95.53%] memcs_column_binary_search:
+[  660] [ 2.52%] ......... [99.70%] memcs_column_binary_search_8:
+[  660] [ 2.52%] .......... [100.00%] memcs_vec_8_binary_search:
+[  660] [ 2.52%] ........... [100.00%] bps_vec_memcs_vec_8_binary_search_impl
+[  319] [ 1.22%] .......... [48.33%] bps_vec_memcs_vec_8_lower_bound:
+[  247] [ 0.94%] ........... [77.43%] bps_vec_memcs_vec_8_lower_bound_inner:
+[  138] [ 0.53%] ............ [55.87%] bps_vec_memcs_vec_8_compare:
+[  117] [ 0.45%] ............. [84.78%] memcs_vec_8_compare:
+[   15] [ 0.06%] .............. [12.82%] key_part_compare_result
+[   22] [ 0.08%] ............ [ 8.91%] bit_test
+[   16] [ 0.06%] ........... [ 5.02%] bps_vec_memcs_vec_8_find_end_pos
+[   10] [ 0.04%] ........... [ 3.13%] bps_vec_memcs_vec_8_restore_block:
+[   10] [ 0.04%] ............ [100.00%] matras_view_get:
+[   10] [ 0.04%] ............. [100.00%] matras_view_get_no_check
+[    5] [ 0.02%] ........... [ 1.57%] bps_vec_memcs_vec_8_find_begin_pos
+[  298] [ 1.14%] .......... [45.15%] bps_vec_memcs_vec_8_upper_bound:
+[  219] [ 0.84%] ........... [73.49%] bps_vec_memcs_vec_8_upper_bound_inner:
+[  118] [ 0.45%] ............ [53.88%] bps_vec_memcs_vec_8_compare:
+[   97] [ 0.37%] ............. [82.20%] memcs_vec_8_compare:
+[   17] [ 0.06%] .............. [17.53%] key_part_compare_result
+[   20] [ 0.08%] ............ [ 9.13%] bit_test
+[   10] [ 0.04%] ........... [ 3.36%] bps_vec_memcs_vec_8_restore_block:
+[   10] [ 0.04%] ............ [100.00%] matras_view_get
+[    8] [ 0.03%] ............ [80.00%] matras_view_get_no_check
+[    5] [ 0.02%] ........... [ 1.68%] bps_vec_memcs_vec_8_find_end_pos
+[    3] [ 0.01%] ........... [ 1.01%] bps_vec_memcs_vec_8_find_begin_pos
+[   18] [ 0.07%] .......... [ 2.73%] bps_vec_memcs_vec_8_root:
+[   18] [ 0.07%] ........... [100.00%] matras_view_get:
+[   18] [ 0.07%] ............ [100.00%] matras_view_get_no_check
+[    5] [ 0.02%] .......... [ 0.76%] bps_vec_memcs_vec_8_find_end_pos
+[    1] [ 0.00%] .......... [ 0.15%] bps_vec_memcs_vec_8_find_begin_pos
+[   13] [ 0.05%] ........ [ 1.88%] memcs_value_from_mp:
+[    3] [ 0.01%] ......... [23.08%] mp_decode_uint:
+[    3] [ 0.01%] .......... [100.00%] mp_decode_uint_data
+[    2] [ 0.01%] .......... [66.67%] mp_load_u32
+[    9] [ 0.03%] ........ [ 1.30%] memcs_index_size:
+[    5] [ 0.02%] ......... [55.56%] memcs_column_size:
+[    5] [ 0.02%] .......... [100.00%] memcs_column_vec_size
+[    2] [ 0.01%] ......... [22.22%] memcs_column_vec_size
+[   19] [ 0.07%] ..... [ 0.07%] exact_key_validate:
+[   16] [ 0.06%] ...... [84.21%] key_validate_parts:
+[    7] [ 0.03%] ....... [43.75%] key_part_validate:
+[    3] [ 0.01%] ........ [42.86%] field_mp_type_is_compatible:
+[    3] [ 0.01%] ......... [100.00%] field_mp_plain_type_is_compatible
+[    1] [ 0.00%] ........ [14.29%] field_type_is_fixed_int
+[    4] [ 0.02%] ....... [25.00%] mp_next
+[    9] [ 0.03%] ..... [ 0.03%] memcs_space_apply_secondary:
+[    8] [ 0.03%] ...... [88.89%] index_find:
+[    8] [ 0.03%] ....... [100.00%] space_index
+[    9] [ 0.03%] ..... [ 0.03%] memcs_set_crud_txn_stmt:
+[    4] [ 0.02%] ...... [44.44%] tuple_ref
+[    2] [ 0.01%] ...... [22.22%] audit_log_dml_enabled
+[    5] [ 0.02%] ..... [ 0.02%] txn_current_stmt:
+[    1] [ 0.00%] ...... [20.00%] stailq_next
+[    4] [ 0.02%] ..... [ 0.02%] region_aligned_alloc:
+[    1] [ 0.00%] ...... [25.00%] region_aligned_reserve:
+[    1] [ 0.00%] ....... [100.00%] small_align
+[    2] [ 0.01%] ..... [ 0.01%] tx_region_acquire
+[    2] [ 0.01%] ..... [ 0.01%] tx_region_release:
+[    1] [ 0.00%] ...... [50.00%] tx_track_allocation
+[    1] [ 0.00%] ..... [ 0.00%] mp_decode_array
+[    4] [ 0.02%] .... [ 0.02%] space_has_before_replace_triggers:
+[    3] [ 0.01%] ..... [75.00%] space_event_has_triggers:
+[    1] [ 0.00%] ...... [33.33%] event_has_triggers
+[    1] [ 0.00%] ..... [25.00%] rlist_empty
+[   80] [ 0.31%] ... [ 0.31%] txn_commit_stmt:
+[   40] [ 0.15%] .... [50.00%] txn_add_redo:
+[   24] [ 0.09%] ..... [60.00%] xrow_encode_dml:
+[    6] [ 0.02%] ...... [25.00%] region_alloc:
+[    4] [ 0.02%] ....... [66.67%] region_reserve:
+[    2] [ 0.01%] ........ [50.00%] rlist_empty
+[    3] [ 0.01%] ...... [12.50%] memcpy:
+[    1] [ 0.00%] ....... [33.33%] memcpy@plt
+[    1] [ 0.00%] ....... [33.33%] __memcpy_evex_unaligned_erms
+[    1] [ 0.00%] ...... [ 4.17%] mp_encode_map
+[    1] [ 0.00%] ...... [ 4.17%] mp_encode_uint
+[   11] [ 0.04%] ..... [27.50%] tx_region_alloc_object:
+[   11] [ 0.04%] ...... [100.00%] region_aligned_alloc
+[    7] [ 0.03%] ...... [63.64%] region_aligned_reserve:
+[    7] [ 0.03%] ....... [100.00%] region_reserve:
+[    7] [ 0.03%] ........ [100.00%] rslab_unused
+[    1] [ 0.00%] ...... [ 9.09%] rslab_data_end
+[    2] [ 0.01%] ..... [ 5.00%] tx_region_release:
+[    1] [ 0.00%] ...... [50.00%] tx_track_allocation
+[   12] [ 0.05%] .... [15.00%] txn_event_add_space:
+[   12] [ 0.05%] ..... [100.00%] space_event_has_triggers
+[    8] [ 0.03%] .... [10.00%] txn_current_stmt:
+[    8] [ 0.03%] ..... [100.00%] stailq_next
+[    5] [ 0.02%] .... [ 6.25%] space_is_data_temporary:
+[    5] [ 0.02%] ..... [100.00%] space_opts_is_data_temporary
+[    1] [ 0.00%] .... [ 1.25%] txn_update_row_counts
+[    1] [ 0.00%] .... [ 1.25%] space_has_on_replace_triggers:
+[    1] [ 0.00%] ..... [100.00%] space_event_has_triggers
+[   28] [ 0.11%] ... [ 0.11%] rmean_collect
+[   23] [ 0.09%] ... [ 0.09%] txn_begin_stmt:
+[   14] [ 0.05%] .... [60.87%] txn_stmt_new:
+[    6] [ 0.02%] ..... [42.86%] tx_region_alloc_object:
+[    6] [ 0.02%] ...... [100.00%] region_aligned_alloc
+[    1] [ 0.00%] ...... [16.67%] region_aligned_reserve:
+[    1] [ 0.00%] ....... [100.00%] region_reserve
+[    2] [ 0.01%] .... [ 8.70%] stailq_last
+[    1] [ 0.00%] .... [ 4.35%] txn_begin_in_engine
+[    1] [ 0.00%] .... [ 4.35%] engine_begin_statement
+[    5] [ 0.02%] ... [ 0.02%] access_check_space:
+[    2] [ 0.01%] .... [40.00%] effective_user
+[    4] [ 0.02%] ... [ 0.02%] in_txn
+[    3] [ 0.01%] ... [ 0.01%] tuple_ref
+[    3] [ 0.01%] ... [ 0.01%] tuple_bless:
+[    1] [ 0.00%] .... [33.33%] tuple_ref:
+[    1] [ 0.00%] ..... [100.00%] tuple_upload_refs
+[    3] [ 0.01%] ... [ 0.01%] tuple_unref
+[    8] [ 0.03%] .. [ 0.03%] box_process1:
+[    5] [ 0.02%] ... [62.50%] space_cache_find:
+[    3] [ 0.01%] .... [60.00%] space_by_id_fast
+[   66] [ 0.25%] . [ 0.25%] mp_next:
+[    1] [ 0.00%] .. [ 1.52%] mp_load_u8
+[   52] [ 0.20%] . [ 0.20%] __GI___libc_free:
+[    2] [ 0.01%] .. [ 3.85%] arena_for_chunk
+[   40] [ 0.15%] . [ 0.15%] memcs_index_arrow_stream_get_next:
+[   30] [ 0.11%] .. [75.00%] arrow_array_create:
+[   18] [ 0.07%] ... [60.00%] arrow_array_new_column:
+[   14] [ 0.05%] .... [77.78%] arrow_array_buffer_alloc:
+[   14] [ 0.05%] ..... [100.00%] _mid_memalign:
+[   14] [ 0.05%] ...... [100.00%] _int_memalign
+[    4] [ 0.02%] .... [22.22%] __GI___libc_malloc
+[   10] [ 0.04%] ... [33.33%] __libc_calloc
+[    1] [ 0.00%] ... [ 3.33%] calloc@plt
+[    6] [ 0.02%] .. [15.00%] memcs_index_scanner_next_impl:
+[    3] [ 0.01%] ... [50.00%] memcs_index_binary_search_by_unique_key:
+[    3] [ 0.01%] .... [100.00%] memcs_index_binary_search_by_key:
+[    3] [ 0.01%] ..... [100.00%] memcs_column_binary_search:
+[    3] [ 0.01%] ...... [100.00%] memcs_column_binary_search_8:
+[    3] [ 0.01%] ....... [100.00%] memcs_vec_8_binary_search:
+[    3] [ 0.01%] ........ [100.00%] bps_vec_memcs_vec_8_binary_search_impl
+[    2] [ 0.01%] .... [66.67%] bps_vec_memcs_vec_8_upper_bound:
+[    2] [ 0.01%] ..... [100.00%] bps_vec_memcs_vec_8_upper_bound_inner
+[    1] [ 0.00%] ..... [50.00%] bit_test
+[    1] [ 0.00%] ..... [50.00%] bps_vec_memcs_vec_8_compare:
+[    1] [ 0.00%] ...... [100.00%] memcs_vec_8_compare
+[    1] [ 0.00%] .... [33.33%] bps_vec_memcs_vec_8_find_end_pos
+[    1] [ 0.00%] ... [16.67%] tuple_new:
+[    1] [ 0.00%] .... [100.00%] runtime_tuple_new:
+[    1] [ 0.00%] ..... [100.00%] smalloc
+[    1] [ 0.00%] ... [16.67%] memcs_index_get_key_by_offset:
+[    1] [ 0.00%] .... [100.00%] mpstream_init
+[    1] [ 0.00%] ... [16.67%] tuple_delete:
+[    1] [ 0.00%] .... [100.00%] smfree:
+[    1] [ 0.00%] ..... [100.00%] slab_from_ptr
+[    4] [ 0.02%] .. [10.00%] memcs_index_arrow_stream_get_next_one:
+[    2] [ 0.01%] ... [50.00%] memcs_column_iterator_scan:
+[    1] [ 0.00%] .... [50.00%] memcs_column_iterator_scan_8:
+[    1] [ 0.00%] ..... [100.00%] memcs_vec_8_iterator_scan:
+[    1] [ 0.00%] ...... [100.00%] bps_vec_memcs_vec_8_iterator_scan:
+[    1] [ 0.00%] ....... [100.00%] bps_vec_memcs_vec_8_scan_leaf:
+[    1] [ 0.00%] ........ [100.00%] bit_copy_range
+[    1] [ 0.00%] ... [25.00%] bit_count
+[    1] [ 0.00%] ... [25.00%] memcs_column_field_type
+[   24] [ 0.09%] . [ 0.09%] __GI___libc_malloc
+[    9] [ 0.03%] . [ 0.03%] arrow_array_transpose:
+[    6] [ 0.02%] .. [66.67%] arrow_array_row_to_mp:
+[    4] [ 0.02%] ... [66.67%] mp_encode_uint_safe:
+[    2] [ 0.01%] .... [50.00%] mp_sizeof_uint
+[    1] [ 0.00%] .... [25.00%] mp_encode_uint
+[    4] [ 0.02%] . [ 0.02%] __GI___libc_malloc
+[    3] [ 0.01%] . [ 0.01%] mp_next@plt
+[    2] [ 0.01%] . [ 0.01%] box_delete@plt
+[    1] [ 0.00%] . [ 0.00%] ~ScopedGuard:
+[    1] [ 0.00%] .. [100.00%] region_truncate
+[    1] [ 0.00%] . [ 0.00%] free@plt

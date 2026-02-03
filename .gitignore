@@ -7,3 +7,5 @@
 *.swp
 *.so
 *.exe
+*.perf.data
+*.perf.report

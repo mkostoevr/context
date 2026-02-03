@@ -1,0 +1,63 @@
+
+Engine: memcs
+Size: 2500000
+
+Format:
+  id: unsigned (random unique)
+  sk: unsigned (incrementing)
+  extra%i: unsigned (incrementing) (template, count: 99)
+
+Indexes:
+  pk:
+    id: unsigned
+  sk:
+    sk: unsigned
+
+Search index: sk
+Until offset: 2250000
+Search part count: 1
+Write index: pk
+Batch size: 1000
+
+WAL mode: write
+In one transaction: true
+
+Initialization...
+
+box.slab.info:
+  items_size: 671072
+  items_used_ratio: 6.82%
+  quota_size: 17179869184
+  quota_used_ratio: 15.33%
+  arena_used_ratio: 98.4%
+  items_used: 45800
+  quota_used: 2634022912
+  arena_size: 2634022912
+  arena_used: 2591666920
+
+box.info.memory:
+  cache: 0
+  data: 29159
+  index: 983040
+  lua: 90917964
+  net: 1114112
+  tx: 0
+
+box.stat.memtx.data:
+  garbage: 0
+  total: 29159
+  read_view: 0
+
+box.stat.memtx.index:
+  read_view: 0
+  total: 983040
+
+Testing...
+
+delete_until_lua_range_api: 176.03
+
+Waiting for perf...
+
+
+Deleted|updated|processed count (per test): 2250000
+
