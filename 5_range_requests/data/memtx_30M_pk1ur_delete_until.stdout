@@ -1,0 +1,65 @@
+Engine: memtx
+Size: 30000000
+
+Format:
+  id: unsigned (random unique)
+
+Indexes:
+  pk:
+    id: unsigned
+
+Search index: pk
+Until offset: 27000000
+Search part count: 1
+Write index: pk
+Batch size: 1000
+
+WAL mode: write
+In one transaction: true
+
+Warm-up skipped.
+Testing...
+
+
+
+Tree depth: 6
+Tree fillment: 30000000 / 33670805 (89.10%)
+Memory used: 0.544GB
+
+
+
+box.slab.info:
+  items_size: 480170896
+  items_used_ratio: 99.97%
+  quota_size: 30064771072
+  quota_used_ratio: 3.63%
+  arena_used_ratio: 97.6%
+  items_used: 480044592
+  quota_used: 1090519040
+  arena_size: 1090519040
+  arena_used: 1064707632
+
+box.info.memory:
+  cache: 0
+  data: 479894613
+  index: 584663040
+  lua: 661693628
+  net: 1114112
+  tx: 0
+
+box.stat.memtx.data:
+  garbage: 0
+  total: 479894613
+  read_view: 0
+
+box.stat.memtx.index:
+  read_view: 0
+  total: 584663040
+
+delete_until_lua_naive: 209.09
+delete_until_lua_batched: 211.86
+delete_until_sql: 113.04
+delete_until_c_naive: 63.40
+delete_until_c_batched: 56.77
+
+Deleted|updated|processed count (per test): 27000000

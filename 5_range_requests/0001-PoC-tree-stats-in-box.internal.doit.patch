@@ -1,0 +1,232 @@
+From d7e2c81e1c63d9ff59d4c684c016e2f087bf6a8d Mon Sep 17 00:00:00 2001
+From: Magomed Kostoev <m.kostoev@tarantool.org>
+Date: Thu, 5 Feb 2026 13:23:16 +0300
+Subject: [PATCH] PoC: tree stats in box.internal.doit
+
+---
+ src/box/lua/misc.cc      | 18 ++++++++++++
+ src/box/memtx_tree.cc    | 62 ++++++++++++++++++++++++++++++----------
+ src/box/memtx_tree.h     |  6 ++++
+ src/box/module_cache.c   |  8 +++---
+ src/lib/salad/bps_tree.h | 21 ++++++++++++++
+ 5 files changed, 96 insertions(+), 19 deletions(-)
+
+diff --git a/src/box/lua/misc.cc b/src/box/lua/misc.cc
+index 0d36373531..3424ea4c5c 100644
+--- a/src/box/lua/misc.cc
++++ b/src/box/lua/misc.cc
+@@ -41,6 +41,7 @@
+ #include "box/errcode.h"
+ #include "box/lua/tuple.h"
+ #include "box/memtx_tx.h"
++#include "box/memtx_tree.h"
+ #include "box/port.h"
+ #include "box/read_view.h"
+ #include "box/space_cache.h"
+@@ -390,6 +391,22 @@ lbox_generate_func_id(lua_State *L)
+ 	return 1;
+ }
+ 
++/** Do whatever to be done. */
++static int
++lbox_doit(lua_State *L)
++{
++	assert(lua_gettop(L) == 2);
++	assert(lua_isnumber(L, 1));
++	assert(lua_isnumber(L, 2));
++	uint32_t space_id = lua_tonumber(L, 1);
++	uint32_t index_id = lua_tonumber(L, 2);
++	struct space *space = space_by_id_fast(space_id);
++	struct index *index = space_index(space, index_id);
++	if (memtx_tree_doit(index) != 0)
++		return luaT_error(L);
++	return 0;
++}
++
+ /* }}} */
+ 
+ /** {{{ Helper that generates user auth data. **/
+@@ -587,6 +604,7 @@ void
+ box_lua_misc_init(struct lua_State *L)
+ {
+ 	static const struct luaL_Reg boxlib_internal[] = {
++		{"doit", lbox_doit},
+ 		{"prepare_auth", lbox_prepare_auth},
+ 		{"select", lbox_select},
+ 		{"txn_set_isolation", lbox_txn_set_isolation},
+diff --git a/src/box/memtx_tree.cc b/src/box/memtx_tree.cc
+index 8e408007fd..a420a20f98 100755
+--- a/src/box/memtx_tree.cc
++++ b/src/box/memtx_tree.cc
+@@ -2308,6 +2308,52 @@ memtx_tree_index_build_using_sort_data(struct index *base,
+ 	}
+ }
+ 
++/** Type of index in terms of different vtabs. */
++enum memtx_tree_vtab_type {
++	/** General index type. */
++	MEMTX_TREE_VTAB_GENERAL,
++	/** Multikey index type. */
++	MEMTX_TREE_VTAB_MULTIKEY,
++	/** Func index type. */
++	MEMTX_TREE_VTAB_FUNC,
++	/** Disabled index type. */
++	MEMTX_TREE_VTAB_DISABLED,
++	/** Count of types. */
++	MEMTX_TREE_VTAB_TYPE_COUNT,
++};
++
++template <memtx_tree_vtab_type TYPE, bool USE_HINT = true>
++static const struct index_vtab *
++get_memtx_tree_index_vtab(void);
++
++template<bool USE_HINT>
++static int
++memtx_tree_doit(struct index *base)
++{
++	if (base->vtab !=
++	    get_memtx_tree_index_vtab<MEMTX_TREE_VTAB_GENERAL, USE_HINT>()) {
++		printf("\n\nUnsupported MemTX tree (or not MemTX at all?)\n\n");
++		return 0;
++	}
++
++	struct memtx_tree_index<USE_HINT> *index =
++		(struct memtx_tree_index<USE_HINT> *)base;
++	printf("\n\n\n");
++	memtx_tree_doit(&index->tree);
++	printf("\n\n\n");
++	return 0;
++}
++
++int
++memtx_tree_doit(struct index *base)
++{
++	if (memtx_tree_index_uses_hint(base->def))
++		return memtx_tree_doit<true>(base);
++	else
++		return memtx_tree_doit<false>(base);
++	return 0;
++}
++
+ static int
+ memtx_tree_disabled_index_build_next(struct index *index, struct tuple *tuple)
+ {
+@@ -2696,25 +2742,11 @@ static const struct memtx_index_vtab memtx_tree_disabled_index_vtab = {
+ 	/* .end_build = */ generic_memtx_index_end_build,
+ };
+ 
+-/** Type of index in terms of different vtabs. */
+-enum memtx_tree_vtab_type {
+-	/** General index type. */
+-	MEMTX_TREE_VTAB_GENERAL,
+-	/** Multikey index type. */
+-	MEMTX_TREE_VTAB_MULTIKEY,
+-	/** Func index type. */
+-	MEMTX_TREE_VTAB_FUNC,
+-	/** Disabled index type. */
+-	MEMTX_TREE_VTAB_DISABLED,
+-	/** Count of types. */
+-	MEMTX_TREE_VTAB_TYPE_COUNT,
+-};
+-
+ /**
+  * Get index vtab by @a TYPE and @a USE_HINT, template version.
+  * USE_HINT == false is only allowed for general index type.
+  */
+-template <memtx_tree_vtab_type TYPE, bool USE_HINT = true>
++template <memtx_tree_vtab_type TYPE, bool USE_HINT>
+ static const struct index_vtab *
+ get_memtx_tree_index_vtab(void)
+ {
+diff --git a/src/box/memtx_tree.h b/src/box/memtx_tree.h
+index 2c2f094b7b..3eaaa822e9 100644
+--- a/src/box/memtx_tree.h
++++ b/src/box/memtx_tree.h
+@@ -59,6 +59,12 @@ int
+ memtx_tree_index_build_using_sort_data(struct index *base,
+ 				       struct memtx_sort_data_reader *reader);
+ 
++/**
++ * Do whatever to be done.
++ */
++int
++memtx_tree_doit(struct index *base);
++
+ #if defined(__cplusplus)
+ } /* extern "C" */
+ #endif /* defined(__cplusplus) */
+diff --git a/src/box/module_cache.c b/src/box/module_cache.c
+index 22bad19ba6..e79f3e886b 100644
+--- a/src/box/module_cache.c
++++ b/src/box/module_cache.c
+@@ -367,10 +367,10 @@ module_new(const char *package, size_t package_len,
+ 	}
+ 
+ 	m->handle = dlopen(load_name, RTLD_NOW | RTLD_LOCAL);
+-	if (unlink(load_name) != 0)
+-		say_warn("failed to unlink dso link: %s", load_name);
+-	if (rmdir(dir_name) != 0)
+-		say_warn("failed to delete temporary dir: %s", dir_name);
++	//if (unlink(load_name) != 0)
++	//	say_warn("failed to unlink dso link: %s", load_name);
++	//if (rmdir(dir_name) != 0)
++	//	say_warn("failed to delete temporary dir: %s", dir_name);
+ 	if (m->handle == NULL) {
+ 		diag_set(ClientError, ER_LOAD_MODULE,
+ 			 tt_cstr(package, package_len), dlerror());
+diff --git a/src/lib/salad/bps_tree.h b/src/lib/salad/bps_tree.h
+index 1c48b371b2..11c06713c7 100644
+--- a/src/lib/salad/bps_tree.h
++++ b/src/lib/salad/bps_tree.h
+@@ -402,6 +402,7 @@ typedef int64_t bps_tree_block_card_t;
+ #define bps_tree_size _api_name(size)
+ #define bps_tree_view_size _api_name(view_size)
+ #define bps_tree_mem_used _api_name(mem_used)
++#define bps_tree_doit _api_name(doit)
+ #define bps_tree_random _api_name(random)
+ #define bps_tree_invalid_iterator _api_name(invalid_iterator)
+ #define bps_tree_iterator_is_invalid _api_name(iterator_is_invalid)
+@@ -844,6 +845,13 @@ bps_tree_view_size(const struct bps_tree_view *view);
+ static inline size_t
+ bps_tree_mem_used(const struct bps_tree *tree);
+ 
++/**
++ * @brief Do whatever to be done
++ * @param tree - pointer to a tree
++ */
++static inline void
++bps_tree_doit(const struct bps_tree *tree);
++
+ /**
+  * @brief Get a random element in a tree.
+  * @param tree - pointer to a tree
+@@ -1816,6 +1824,18 @@ bps_tree_mem_used(const struct bps_tree *tree)
+ 	return res;
+ }
+ 
++static inline void
++bps_tree_doit(const struct bps_tree *t)
++{
++	const struct bps_tree_common *tree = &t->common;
++
++	printf("Tree depth: %u\n", tree->depth);
++        printf("Tree fillment: %ld / %d (%.02f%%)\n",
++	       tree->size, tree->leaf_count * BPS_TREE_MAX_COUNT_IN_LEAF,
++	       ((double)tree->size / (double)(tree->leaf_count * BPS_TREE_MAX_COUNT_IN_LEAF)) * 100.0);
++        printf("Memory used: %.03fGB\n", (double)bps_tree_mem_used(t) / 1024.0 / 1024.0 / 1024.0);
++}
++
+ /**
+  * @brief Get a pointer to block by it's ID.
+  */
+@@ -7651,6 +7671,7 @@ bps_tree_debug_check_internal_functions(bool assertme)
+ #undef bps_tree_size
+ #undef bps_tree_view_size
+ #undef bps_tree_mem_used
++#undef bps_tree_doit
+ #undef bps_tree_random
+ #undef bps_tree_invalid_iterator
+ #undef bps_tree_iterator_is_invalid
+-- 
+2.43.0
+
